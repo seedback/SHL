@@ -10,7 +10,7 @@ class NotImplementedException : public std::runtime_error {
 
   NotImplementedException(std::string method_name_or_aditional,
                           bool is_aditional = false)
-      : runtime_error(find_method_name_or_aditional(method_name_or_aditional,
+      : runtime_error(MethodNameOrAditionalErrorMsg(method_name_or_aditional,
                                                     is_aditional)) {}
 
   NotImplementedException(std::string method_name, std::string class_name)
@@ -23,7 +23,7 @@ class NotImplementedException : public std::runtime_error {
                       " of class " + class_name + " " + aditional + ".") {}
 
  private:
-  std::string find_method_name_or_aditional(
+  std::string MethodNameOrAditionalErrorMsg(
       std::string method_name_or_aditional, bool is_aditional) {
     if (is_aditional)
       return "Not implemented exception " + method_name_or_aditional + ".";
